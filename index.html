@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do-Liste</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="card">
+      <header>
+        <h1 class="title">To-do-Liste</h1>
+      </header>
+      <main class="container">
+        <section class="inputAndStatus">
+          <label for="input" class="label">Notiz:</label>
+          <input
+            type="text"
+            id="input"
+            placeholder="Bitte gebe hier deine Notiz ein"
+          />
+          <div class="btnSection">
+            <button id="addBtn" type="button">Hinzufügen</button>
+            <button id="delBtn" type="button">Löschen</button>
+          </div>
+          <p id="status" aria-live="polite"></p>
+        </section>
+        <section class="listAndFilter">
+          <h3 class="title">To-dos:</h3>
+          <div class="filterAndSearch">
+            <select id="filterSelect" aria-label="Filter">
+              <option value="all">Alle</option>
+              <option value="open">Nur offen</option>
+              <option value="done">Nur erledigt</option>
+            </select>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Suche (optional)"
+            />
+          </div>
+          <div class="listArea">
+            <ul id="list"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

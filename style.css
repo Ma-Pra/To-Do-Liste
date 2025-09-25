@@ -1,0 +1,319 @@
+/* ========== Grundlegendes Reset & Basislayout ========== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ========== Fixierte Card / Overlay-Vollbild ========== */
+.card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    background: radial-gradient(circle, rgba(207, 188, 232, 1) 0%, rgba(253, 245, 255, 1) 100%);
+}
+
+/* ========== Header ========== */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header .title {
+    font-size: 2.5rem;
+    color: #4a4a4a;
+}
+
+/* ========== Hauptcontainer ========== */
+main.container {
+    max-width: 90%;
+    min-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* ========== Eingabe & Statusbereich ========== */
+.inputAndStatus {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inputAndStatus .label {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.inputAndStatus input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+}
+
+/* ========== Button-Leiste (Hinzufügen / Löschen) ========== */
+.btnSection {
+    display: flex;
+    gap: 10px;
+}
+
+.btnSection button {
+    margin: 0 auto;
+    padding: 1rem 20%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#addBtn {
+    background-color: #4caf50;
+    color: #fff;
+}
+#addBtn:hover {
+    background-color: #45a049;
+}
+
+#delBtn {
+    background-color: #f44336;
+    color: #fff;
+}
+#delBtn:hover {
+    background-color: #e53935;
+}
+
+/* ========== Statusfeld ========== */
+#status {
+    font-style: italic;
+    color: #fff;
+    min-height: 1.2em;
+    margin: 0 auto;
+    padding: 0 1.5em;
+    border-radius: 50px;
+    font-size: 1rem;
+}
+
+.statusNeutral {
+    background-color: #4a4a4a;
+}
+
+.statusRed {
+    background-color: #f44336;
+    padding: 1rem 10%;
+}
+
+.statusGreen {
+    background-color: #4caf50;
+    max-width: 30%;
+}
+
+/* ========== Filter- & Suchleiste ========== */
+.listAndFilter {
+    margin-top: 30px;
+}
+
+.listAndFilter .title {
+    font-size: 1.5rem;
+    color: #4a4a4a;
+    margin-bottom: 15px;
+}
+
+.filterAndSearch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filterAndSearch select,
+.filterAndSearch input[type="text"] {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    flex: 1;
+}
+
+.filterAndSearch select {
+    max-width: 300px;
+}
+
+/* ========== ToDo-Liste ========== */
+ul#list {
+    list-style: none;
+}
+
+ul#list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    background-color: #f4f4f9;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+ul#list li div {
+    flex: 1;
+    margin: 0 10px;
+}
+
+ul#list li span {
+    font-size: 2rem;
+    color: #333;
+}
+
+ul#list li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Zustand: erledigt */
+ul#list li.done span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* Buttons innerhalb der Liste */
+ul#list li button {
+    margin-left: 5px;
+    padding: 0.75rem 5%;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+ul#list li button:hover {
+    opacity: 0.8;
+}
+
+ul#list li button:first-of-type {
+    background-color: #2196f3;
+    color: white;
+}
+
+ul#list li button:last-of-type {
+    background-color: #f44336;
+    color: white;
+}
+
+/* ========== Responsive Anpassungen ========== */
+@media (max-width: 900px) {
+    main.container {
+        padding: 15px 20px;
+    }
+
+    .filterAndSearch {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btnSection {
+        flex-direction: column;
+    }
+
+    .btnSection button {
+        width: 100%;
+    }
+}
+
+/* ========== Bestätigungsdialog (Delete All) ========== */
+.confirm-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    max-width: 90vw;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    padding: 24px 20px 16px;
+    text-align: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.confirm-box span {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.confirm-box .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.confirm-box button {
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.confirm-box button:first-of-type {
+    background-color: #ff3b30;
+    color: #fff;
+}
+.confirm-box button:first-of-type:hover {
+    background-color: #e33228;
+}
+
+.confirm-box button:last-of-type {
+    background-color: #e0e0e0;
+    color: #000;
+}
+.confirm-box button:last-of-type:hover {
+    background-color: #d5d5d5;
+}
+
+/* Overlay */
+.blocker-overlay {
+    position: absolute;
+    border-radius: 50px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
